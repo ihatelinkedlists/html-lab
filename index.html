@@ -51,6 +51,28 @@ margin-left: 30px;
  <!-- Content goes here. -->
   
 </p>
+<script>
+    let lastTime = 0;
 
+    document.addEventListener("mousemove", (e) => {
+      const now = Date.now();
+
+      // only create a circle every 50ms (0.05s)
+      if (now - lastTime < 50) return;
+      lastTime = now;
+
+      const circle = document.createElement("div");
+      circle.className = "mouse-circle";
+      circle.style.left = e.clientX + "px";
+      circle.style.top = e.clientY + "px";
+
+      document.body.appendChild(circle);
+
+      // remove after 1 second
+      setTimeout(() => {
+        circle.remove();
+      }, 1000);
+    });
+  </script>
  </body>
 </html>
