@@ -7,11 +7,11 @@ h2 {
 }
 
 .mouse-circle {
-      position: fixed;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.4);
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-    }
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
