@@ -1,73 +1,82 @@
-
-
 <!DOCTYPE html>
 <html>
- <head>
 <head>
+  <title>Bret Anderson</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<style>
-p {
-margin-top: 50px;
-margin-right: 30px;
-margin-bottom: 50px;
-margin-left: 30px;
-}
-</style>
 
+<body style="background-color: lightblue;">
 
+  <h1>About me (Bret Anderson)</h1>
 
- <title>Bret Anderson</title>
- <h1>
-    About me (Bret Anderson)
- </h1>
- <h2 style=>
-    Education
- </h2>
- <p>
+  <h2>Education</h2>
+  <p>
     I went to Roseburg High School in Oregon.
     I am currently a freshman majoring in Cybersecurity at BYU.
- </p>
- <h2>
-    Hobbies
- </h2>
- <p>
-    I like running and playing beat saber.
-    I like to run 3 miles around campus at night
- </p>
- <h2>
-    Family
- </h2>
- <p>
+  </p>
+
+  <h2>Hobbies</h2>
+  <p>
+    I like running and playing Beat Saber.
+    I like to run 3 miles around campus at night.
+  </p>
+
+  <h2>Family</h2>
+  <p>
     I have an older brother and a younger sister.
     My brother is 22 and attending BYU. He is very good at playing the drums.
     My sister is 15 and is a freshman at Roseburg High School.
     She is pretty good at math.
+  </p>
 
- </p>
- <h2 id="christmas-countdown"></h2>
- </head>
- <body style="background-color: lightblue;">
- <!-- Content goes here. -->
+  <h2 id="christmas-countdown"></h2>
+
   <script>
-  function daysUntilChristmas() {
-    const now = new Date();
+    // -----------------------------
+    // Mouse circle effect
+    // -----------------------------
+    let lastTime = 0;
 
-    let christmas = new Date(now.getFullYear(), 11, 25); // Month is 0-indexed (11 = December)
+    document.addEventListener("mousemove", (e) => {
+      const now = Date.now();
 
-    if (now > christmas) {
-      christmas = new Date(now.getFullYear() + 1, 11, 25);
+      if (now - lastTime < 50) return; // 0.05 seconds
+      lastTime = now;
+
+      const circle = document.createElement("div");
+      circle.className = "mouse-circle";
+      circle.style.left = e.clientX + "px";
+      circle.style.top = e.clientY + "px";
+
+      document.body.appendChild(circle);
+
+      setTimeout(() => {
+        circle.remove();
+      }, 1000);
+    });
+
+    // -----------------------------
+    // Days until Christmas countdown
+    // -----------------------------
+    function daysUntilChristmas() {
+      const now = new Date();
+
+      let christmas = new Date(now.getFullYear(), 11, 25);
+
+      // If Christmas has passed, use next year
+      if (now > christmas) {
+        christmas = new Date(now.getFullYear() + 1, 11, 25);
+      }
+
+      const diffTime = christmas - now;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+      document.getElementById("christmas-countdown").textContent =
+        diffDays + " days until Christmas";
     }
 
-    const diffTime = christmas - now;
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    daysUntilChristmas();
+  </script>
 
-    document.getElementById("christmas-countdown").textContent =
-      diffDays + " days until Christmas";
-  }
-
-  daysUntilChristmas();
-</script>
-</p>
- </body>
+</body>
 </html>
