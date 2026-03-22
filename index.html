@@ -45,34 +45,29 @@ margin-left: 30px;
     She is pretty good at math.
 
  </p>
- 
+ <h2 id="christmas-countdown"></h2>
  </head>
  <body style="background-color: lightblue;">
  <!-- Content goes here. -->
-  
+  <script>
+  function daysUntilChristmas() {
+    const now = new Date();
+
+    let christmas = new Date(now.getFullYear(), 11, 25); // Month is 0-indexed (11 = December)
+
+    if (now > christmas) {
+      christmas = new Date(now.getFullYear() + 1, 11, 25);
+    }
+
+    const diffTime = christmas - now;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    document.getElementById("christmas-countdown").textContent =
+      diffDays + " days until Christmas";
+  }
+
+  daysUntilChristmas();
+</script>
 </p>
-<script>
-    let lastTime = 0;
-
-    document.addEventListener("mousemove", (e) => {
-      const now = Date.now();
-
-      // only create a circle every 50ms (0.05s)
-      if (now - lastTime < 50) return;
-      lastTime = now;
-
-      const circle = document.createElement("div");
-      circle.className = "mouse-circle";
-      circle.style.left = e.clientX + "px";
-      circle.style.top = e.clientY + "px";
-
-      document.body.appendChild(circle);
-
-      // remove after 1 second
-      setTimeout(() => {
-        circle.remove();
-      }, 1000);
-    });
-  </script>
  </body>
 </html>
