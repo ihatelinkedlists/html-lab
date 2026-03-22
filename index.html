@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BeatLeader API Test</title>
+</head>
+<body>
+
+<h2>BeatLeader API Response</h2>
+<pre id="output">Loading...</pre>
+
+<script>
+fetch("https://api.beatleader.xyz/player/273433?stats=true&keepOriginalId=false&leaderboardContext=1022")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("output").textContent =
+      JSON.stringify(data, null, 2);
+  })
+  .catch(err => {
+    document.getElementById("output").textContent =
+      "Error: " + err;
+  });
+</script>
+
+</body>
+</html>
