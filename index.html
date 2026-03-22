@@ -44,7 +44,7 @@
       }
 
       const diffTime = christmas - now;
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const diffDays = (diffTime / (1000 * 60 * 60 * 24));
 
       document.getElementById("christmas-countdown").textContent =
         diffDays + " days until Christmas";
